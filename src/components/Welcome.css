@@ -1,0 +1,45 @@
+body {
+  text-align: center;
+  margin: 50px auto;
+  width: 80%;
+  max-width: 600px;
+  font-family: Arial, sans-serif;
+}
+.Main_data {
+  padding-top: 70px;
+  padding-bottom: 170px;
+}
+
+h1 {
+  font-size: 40px;
+  color: #333;
+}
+
+h3 {
+  font-size: 26px;
+  color: #555;
+  margin-top: 30px;
+}
+
+p {
+  font-size: 22px;
+  line-height: 1.5;
+  margin-top: 20px;
+}
+
+.iagreebtn {
+  background-color: #ff5579;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 30px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.iagreebtn:hover {
+  background-color: #0077a3;
+}
