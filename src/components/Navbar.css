@@ -1,0 +1,82 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 92px;
+  padding: 0px 10px;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  transition-timing-function: ease-in;
+  transition: all 0.45s;
+}
+.nav_white {
+  background-color: rgb(243, 176, 176);
+}
+
+.logo {
+  width: 90px;
+  object-fit: inherit;
+}
+
+.options {
+  padding-left: 200px;
+  padding-right: 20px;
+}
+.options ul {
+  list-style-type: none;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+  margin-left: 10rem;
+  cursor: pointer;
+  gap: 30px;
+  font-weight: 500;
+  font-size: 14px;
+}
+/* .options ul > * + *  
+  {
+      margin: 40px;
+  } */
+
+.but {
+  background-color: #ff5579;
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  padding: 10px 25px !important;
+  text-transform: capitalize;
+  border-radius: 6rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+.notification-bell {
+  position: relative;
+  display: inline-block;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.notification-bell img {
+  width: 34px;
+  height: 34px;
+}
+
+.notification-badge {
+  position: absolute;
+  top: 0;
+  right: -8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
