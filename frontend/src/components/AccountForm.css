@@ -5,6 +5,9 @@
   margin: 2rem auto;
   max-width: 400px;
 }
+.account-form:hover {
+  background-color: #d4e8fc;
+}
 
 .account-form input,
 .account-form select {
@@ -34,4 +37,7 @@
 
 .account-form button:hover {
   background-color: #0069d9;
+}
+.about{
+  
 }

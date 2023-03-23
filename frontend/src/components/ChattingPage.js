@@ -64,6 +64,7 @@
 // export default Chat;
 
 import React, { useState } from "react";
+import ChatHeader from "./ChatHeader";
 import "./ChattingPage.css";
 
 function ChattingPage() {
@@ -77,6 +78,7 @@ function ChattingPage() {
 
   return (
     <div className="chatting-page">
+    <ChatHeader/>
       <div className="message-box">
         {messages.map((message, index) => (
           <div key={index} className="message">
