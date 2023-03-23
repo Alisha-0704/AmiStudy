@@ -5,7 +5,6 @@ function AccountForm() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    email: "",
     studentId: "",
     Password:"",
   });
@@ -39,13 +38,7 @@ function AccountForm() {
         value={formData.lastName}
         onChange={handleInputChange}
       />
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={formData.email}
-        onChange={handleInputChange}
-      />
+      
       <input
         type="text"
         name="studentId"
