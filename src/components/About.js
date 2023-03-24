@@ -4,6 +4,7 @@ import shreimg from "../images/shreya_mishra.png";
 import alishaimg from "../images/Alisha.jpg";
 import palakimg from "../images/palak.jpg";
 import riyaimg from "../images/Riya.jpg";
+import ayushiimg from "../images/Ayushi_lal.jpg";
 
 const members = [
   {
@@ -29,7 +30,7 @@ const members = [
   {
     name: "Ayushi Lal",
     role: "Developer",
-    image: "https://randomuser.me/api/portraits/men/5.jpg",
+    image: ayushiimg,
   },
 ];
 

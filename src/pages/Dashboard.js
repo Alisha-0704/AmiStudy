@@ -123,7 +123,7 @@ const db = [
   },
 ];
 
-function Advanced() {
+function Dashboard() {
   const [currentIndex, setCurrentIndex] = useState(db.length - 1);
   const [lastDirection, setLastDirection] = useState();
   // used for outOfFrame closure
@@ -176,7 +176,7 @@ function Advanced() {
   };
 
   return (
-    <div className="dashboard">
+    <div className="Dashboard_Main">
       <link
         href="https://fonts.googleapis.com/css?family=Damion&display=swap"
         rel="stylesheet"
@@ -185,56 +185,59 @@ function Advanced() {
         href="https://fonts.googleapis.com/css?family=Alatsi&display=swap"
         rel="stylesheet"
       />
-      <h1>React Tinder Card</h1>
-      <div className="cardContainer">
-        {db.map((character, index) => (
-          <TinderCard
-            ref={childRefs[index]}
-            className="swipe"
-            key={character.name}
-            onSwipe={(dir) => swiped(dir, character.name, index)}
-            onCardLeftScreen={() => outOfFrame(character.name, index)}
-          >
-            <div
-              style={{ backgroundImage: "url(" + character.url + ")" }}
-              className="card"
+      <div className="cardContainer_outer">
+        <h1>React Tinder Card</h1>
+        <div className="cardContainer">
+          {db.map((character, index) => (
+            <TinderCard
+              ref={childRefs[index]}
+              className="swipe"
+              key={character.name}
+              onSwipe={(dir) => swiped(dir, character.name, index)}
+              onCardLeftScreen={() => outOfFrame(character.name, index)}
             >
-              <h3>{character.name}</h3>
-            </div>
-          </TinderCard>
-        ))}
+              <div
+                style={{ backgroundImage: "url(" + character.url + ")" }}
+                className="card"
+              >
+                <h3>{character.name}</h3>
+              </div>
+            </TinderCard>
+          ))}
+        </div>
+        <div className="buttons">
+          <button
+            style={{ backgroundColor: !canSwipe && "#c3c4d3" }}
+            onClick={() => swipe("left")}
+          >
+            Maybe next time
+          </button>
+          <button
+            style={{ backgroundColor: !canGoBack && "#c3c4d3" }}
+            onClick={() => goBack()}
+          >
+            Reconsider the profile
+          </button>
+          <button
+            style={{ backgroundColor: !canSwipe && "#c3c4d3" }}
+            onClick={() => swipe("right")}
+          >
+            Let's study
+          </button>
+        </div>
+
+        {lastDirection ? (
+          <h2 key={lastDirection} className="infoText">
+            You swiped {lastDirection}
+          </h2>
+        ) : (
+          <h2 className="infoText">
+            Swipe a card or press a button to get Restore Card button visible!
+          </h2>
+        )}
       </div>
-      <div className="buttons">
-        <button
-          style={{ backgroundColor: !canSwipe && "#c3c4d3" }}
-          onClick={() => swipe("left")}
-        >
-          Swipe left!
-        </button>
-        <button
-          style={{ backgroundColor: !canGoBack && "#c3c4d3" }}
-          onClick={() => goBack()}
-        >
-          Undo swipe!
-        </button>
-        <button
-          style={{ backgroundColor: !canSwipe && "#c3c4d3" }}
-          onClick={() => swipe("right")}
-        >
-          Swipe right!
-        </button>
-      </div>
-      {lastDirection ? (
-        <h2 key={lastDirection} className="infoText">
-          You swiped {lastDirection}
-        </h2>
-      ) : (
-        <h2 className="infoText">
-          Swipe a card or press a button to get Restore Card button visible!
-        </h2>
-      )}
     </div>
   );
 }
 
-export default Advanced;
+export default Dashboard;
