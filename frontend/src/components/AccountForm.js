@@ -22,6 +22,7 @@ function AccountForm() {
   };
 
   return (
+    <div className="accountform_main">
     <form className="account-form" onSubmit={handleSubmit}>
       <h1>CREATE ACCOUNT</h1>
       <input
@@ -57,6 +58,7 @@ function AccountForm() {
 
       <button type="submit">Create Account</button>
     </form>
+    </div>
   );
 }
 

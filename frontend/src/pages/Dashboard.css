@@ -1,22 +1,29 @@
+.Dashboard_Main {
+  background-image: url("../images/homepgae_amistudy.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
 .swipe {
   position: absolute;
 }
 
-.card-container {
-  width: 90vw;
-  max-width: 260px;
-  margin: auto;
-  height: 300px;
+.cardContainer {
+  width: 100vw;
+  height: 500px;
+  
+}
+.cardContainer_outer
+{
+  padding-left: 150px;
 }
 
 .card {
-  position: relative;
   background-color: #fff;
   width: 80vw;
-
-  max-width: 260px;
-  height: 300px;
-  box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.3);
+  height: 500px;
+  box-shadow: 0px 0px 60px 0px rgba(120, 164, 227, 0.3);
   border-radius: 20px;
   background-size: cover;
   background-position: center;
@@ -31,56 +38,46 @@
   position: absolute;
   bottom: 0;
   margin: 10px;
-  color: rgb(10, 7, 7);
+  color: rgb(183, 24, 24);
 }
 
-.swipe-buttons {
+.infoText {
+  width: 100%;
+  justify-content: center;
   display: flex;
-  justify-content: space-evenly;
-  margin: auto;
+  color: #fff;
+  animation-name: popup;
+  animation-duration: 800ms;
 }
 
-.swipe-button {
+.buttons {
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 270px;
+}
+
+@media (max-width: 625px) {
+  .buttons {
+    flex-direction: column;
+  }
+}
+
+.buttons button {
+  flex-shrink: 0;
+  padding: 10px;
+  border-radius: 5px;
   border: none;
-  border-radius: 20px;
-  padding: 10px 20px;
-  margin: auto;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  text-transform: uppercase;
-  color: white;
-  background-color: #eb5757;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  color: #fff;
+  font-size: 18px;
+  background-color: #9198e5;
+  transition: 200ms;
+  margin: 10px;
+  font-weight: bolder;
+  width: 160px;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
 }
 
-.swipe-button:hover {
-  background-color: #ff5252;
-}
-
-.study-button {
-  background-color: #ff5579;
-  font-size: 16px;
-}
-
-.study-button:hover {
-  background-color: #42a5f5;
-}
-
-.no-button {
-  background-color: #ff5579;
-  font-size: 16px;
-}
-
-.no-button:hover {
-  background-color: #42a5f5;
-}
-.dashboard {
-  background-image: url("../images/Dashboard.png");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;
+.buttons button:hover {
+  transform: scale(1.05);
 }
