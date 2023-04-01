@@ -17,7 +17,7 @@
 import { useCookies } from "react-cookie";
 import React from "react";
 import "./ChatHeader.css";
-import ali from "../images/Alisha.jpg";
+import ali from "../images/shreya_mishra.png";
 const ChatHeader = () => {
   return (
     <div className="chat-container-header">
