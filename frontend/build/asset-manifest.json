@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.899b1e36.css",
+    "main.js": "/static/js/main.caee30a8.js",
+    "static/media/shreya_mishra.png": "/static/media/shreya_mishra.a06997fbd8d9f04ac00d.png",
+    "static/media/ Amistudy_about1.png": "/static/media/ Amistudy_about1.e8dd8ec0457a849308c5.png",
+    "static/media/homepgae_amistudy.png": "/static/media/homepgae_amistudy.8d7aa75f977c1628ebe1.png",
+    "static/media/AmiStudy_main.png": "/static/media/AmiStudy_main.b837622e8a1eceffa32e.png",
+    "static/media/Riya.jpg": "/static/media/Riya.47e030c1bdae146caf58.jpg",
+    "static/media/Ayushi_lal.jpg": "/static/media/Ayushi_lal.d4a9ddd1ca1199ee4f1a.jpg",
+    "static/media/palak.jpg": "/static/media/palak.afeb21c887ec7e337ab0.jpg",
+    "static/media/LOGO.png": "/static/media/LOGO.471c75a96869515bc855.png",
+    "static/media/Alisha.jpg": "/static/media/Alisha.fb630eafa1f803cc174c.jpg",
+    "index.html": "/index.html",
+    "main.899b1e36.css.map": "/static/css/main.899b1e36.css.map",
+    "main.caee30a8.js.map": "/static/js/main.caee30a8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.899b1e36.css",
+    "static/js/main.caee30a8.js"
+  ]
+}

@@ -72,7 +72,7 @@ const Form = () => {
   console.log(name);
   return (
     <div className="specialisation_form">
-      <h className="form_heading">LET'S MAKE YOUR PROFILE</h>
+      <h1 className="form_heading">LET'S MAKE YOUR PROFILE</h1>
       <form onSubmit={handleSubmit} className="form">
         <div className="form-group">
           <label htmlFor="name">Name:</label>
@@ -93,7 +93,7 @@ const Form = () => {
             onChange={(event) => setCourse(event.target.value)}
             required
           >
-            <option value="" selected disabled hidden>
+            <option value="" disabled hidden>
               Choose Course
             </option>
             <option value="btech">B.Tech</option>
@@ -110,7 +110,7 @@ const Form = () => {
             onChange={(event) => setPreferences(event.target.value)}
             required
           >
-            <option value="" selected disabled hidden>
+            <option value="" disabled hidden>
               Choose Specialisation
             </option>
             <option value="frontend">Frontend</option>
@@ -128,7 +128,7 @@ const Form = () => {
             onChange={(event) => setLanguage(event.target.value)}
             required
           >
-            <option value="" selected disabled hidden>
+            <option value="" disabled hidden>
               Choose language
             </option>
             <option value="cpp">C++</option>

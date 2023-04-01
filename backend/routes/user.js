@@ -1,38 +1,41 @@
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcrypt');
 const User = require('../models/user');
+
+// Route for creating a new user
+router.post("/users", async (req, res) => {
+  try {
+    const user = new User(req.body);
+    await user.save();
+    res.status(201).send(user);
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
 
 // Route to handle user login
 router.post('/login', async (req, res, next) => {
-    const { email, password } = req.body;
+    const { studentId, password } = req.body;
     try {
       // Find the user by email
-      const user = await User.findOne({ email });
+      const user = await User.findOne({ studentId });
       if (!user) {
-        return res.status(401).json({ message: 'Invalid email or password' });
+        return res.status(401).json({ message: 'Invalid studentid or password' });
       }
       // Validate the user's password
-      const isValidPassword = await user.isValidPassword(password);
-      if (!isValidPassword) {
-        return res.status(401).json({ message: 'Invalid email or password' });
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+        return res.status(401).json({ message: 'Invalid student ID or password' });
       }
       res.status(200).json({ message: 'Login successful' });
     } catch (error) {
-      next(error);
+      console.error(error);
+      res.status(500).json({ message: 'Internal server error' });
     }
   });
   
-// Route for creating a new user
-router.post('/', async (req, res) => {
-  const { email, password } = req.body;
-  try {
-    const user = new User({ email, password });
-    await user.save();
-    res.status(201).send(user);
-  } catch (err) {
-    res.status(400).send(err.message);
-  }
-});
 
 // Route for getting a user's profile
 router.get('/:id', async (req, res) => {

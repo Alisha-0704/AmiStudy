@@ -1,6 +1,7 @@
 {
   "name": "amistudy",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "dependencies": {
     "@react-spring/web": "^9.5.5",
@@ -20,6 +21,7 @@
     "proxy": "http://localhost:8000/",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "build": "react-scripts build",
     "dev": "nodemon index.js"
   },
   "eslintConfig": {

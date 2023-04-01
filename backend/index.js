@@ -6,9 +6,11 @@ const cors = require('cors');
 
 // Import API routes
 const usersRoutes = require('./routes/user');
-const matchingRoutes = require('./routes/matching');
-const networkingRoutes = require('./routes/networking');
-const eventsRoutes = require('./routes/events');
+// const matchingRoutes = require('./routes/matching');
+// const networkingRoutes = require('./routes/networking');
+// const eventsRoutes = require('./routes/events');
+// const chatRoutes = require("./routes/chat");
+
 
 // Initialize Express app
 const app = express();
@@ -29,9 +31,10 @@ mongoose.connect(uri, {
 
 // Set up API routes
 app.use('/api/users', usersRoutes);
-app.use('/api/matching', matchingRoutes);
-app.use('/api/networking', networkingRoutes);
-app.use('/api/events', eventsRoutes);
+// app.use('/api/matching', matchingRoutes);
+// app.use('/api/networking', networkingRoutes);
+// // app.use('/api/events', eventsRoutes);
+// app.use("/api/chat", chatRoutes);
 
 // Set up error handling middleware
 app.use((err, req, res, next) => {

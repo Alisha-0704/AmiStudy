@@ -1,81 +1,39 @@
-// import React, { useState, useEffect, useRef } from 'react';
-// import './Chat.css';
-
-// function Chat() {
-//   const [messages, setMessages] = useState([]);
-//   const [inputValue, setInputValue] = useState('');
-//   const chatBodyRef = useRef(null);
-
-//   // Add a new message to the chat
-//   function addMessage(message, className) {
-//     setMessages(prevMessages => [...prevMessages, { message, className }]);
-//   }
-
-//   // Handle the input box change
-//   function handleInputChange(event) {
-//     setInputValue(event.target.value);
-//   }
-
-//   // Handle the send button click
-//   function handleSendClick() {
-//     if (inputValue.trim() === '') {
-//       return;
-//     }
-//     addMessage(inputValue, 'sent');
-//     setInputValue('');
-//   }
-
-//   // Handle the Enter key press
-//   function handleEnterPress(event) {
-//     if (event.key === 'Enter') {
-//       handleSendClick();
-//     }
-//   }
-
-//   // Scroll to the bottom of the chat body
-//   function scrollToBottom() {
-//     chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
-//   }
-
-//   // Scroll to the bottom of the chat body on mount and whenever the messages change
-//   useEffect(scrollToBottom, [messages]);
-
-//   return (
-//     <div className="chat-window">
-//       <div className="chat-header">
-//         <h2>Chatting with John Doe</h2>
-//       </div>
-//       <div className="chat-body" ref={chatBodyRef}>
-//         {messages.map((msg, index) => (
-//           <div key={index} className={`message ${msg.className}`}>
-//             <p>{msg.message}</p>
-//             <span className="time">{new Date().toLocaleTimeString()}</span>
-//           </div>
-//         ))}
-//       </div>
-//       <div className="chat-footer">
-//         <input type="text" placeholder="Type your message here" value={inputValue} onChange={handleInputChange} onKeyPress={handleEnterPress} />
-//         <button onClick={handleSendClick}>Send</button>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Chat;
-
-import React, { useState } from "react";
-import ChatHeader from "./ChatHeader";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import ChatHeader from "./ChatHeader.js";
 import "./ChattingPage.css";
 
-function ChattingPage() {
+const ChattingPage = ({ senderId, receiverId }) => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
 
-  const handleSendMessage = () => {
-    setMessages([...messages, newMessage]);
-    setNewMessage("");
-  };
+  useEffect(() => {
+    const fetchMessages = async () => {
+      try {
+        const response = await axios.get(`/api/chat/${senderId}/${receiverId}`);
+        setMessages(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchMessages();
+  }, [senderId, receiverId]);
 
+
+   const handleSendMessage = async () => {
+    try {
+      const response = await axios.post("/api/chat", {
+        senderId: senderId,
+        receiverId: receiverId,
+        message: newMessage,
+      });
+      setMessages([...messages, response.data]);
+      setNewMessage("");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
   return (
     <div className="chatting-page">
     <ChatHeader/>
