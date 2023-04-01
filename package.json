@@ -1,0 +1,23 @@
+{
+  "name": "amistudy",
+  "version": "1.0.0",
+  "description": "src: the source code for our app, including the Python scripts for the Django application, HTML templates for the views, and CSS stylesheets for the frontend.",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.3.4",
+    "concurrently": "^7.6.0"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^5.5.0"
+  }
+}

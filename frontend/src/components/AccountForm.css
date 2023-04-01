@@ -2,8 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 2rem auto;
+  margin: auto;
   max-width: 400px;
+  padding: 20px 20px;
+  border-radius: 30px;
+}
+.account-form:hover {
+  background-color: #d4e8fc;
+}
+.accountform_main {
+  padding-top: 250px;
 }
 
 .account-form input,
@@ -34,4 +42,12 @@
 
 .account-form button:hover {
   background-color: #0069d9;
+}
+
+.accountform_main {
+  background-image: url("../images/AmiStudy_main.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
 }

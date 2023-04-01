@@ -1,20 +1,26 @@
 body {
   text-align: center;
-  margin: 50px auto;
-  width: 80%;
-  max-width: 600px;
+  width: 100%;
   font-family: Arial, sans-serif;
 }
 .Main_data {
-  padding-top: 70px;
-  padding-bottom: 170px;
+  align-items: center;
 }
 
 h1 {
   font-size: 40px;
   color: #333;
 }
+.maindata{
+ width:fit-content;
+ background-color: rgb(242, 255, 255);
+ padding: 20px;
+ margin-left: 400px;
+ border-radius: 30px;
+ 
 
+ 
+}
 h3 {
   font-size: 26px;
   color: #555;
@@ -42,4 +48,12 @@ p {
 
 .iagreebtn:hover {
   background-color: #0077a3;
+}
+.Main_data {
+  background-image: url("../images/AmiStudy_main.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  padding-top: 300px;
 }

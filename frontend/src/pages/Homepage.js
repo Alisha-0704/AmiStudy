@@ -1,23 +1,27 @@
-import Welcome from "../components/Welcome";
-import Navbar from "../components/Navbar";
-import Form from "../components/Form";
-import Chat from "../components/ChattingPage";
-import Dashboard from "./Dashboard";
-import AccountForm from "../components/AccountForm";
-import Userlogin from "../components/Userlogin";
-import About from "../components/About";
+import Welcome from "../components/Welcome.js";
+import Navbar from "../components/Navbar.js";
+import Form from "../components/Form.js";
+import Chat from "../components/ChattingPage.js";
+import Dashboard from "./Dashboard.js";
+import AccountForm from "../components/AccountForm.js";
+import Userlogin from "../components/Userlogin.js";
+import About from "../components/About.js";
+import "./Homepage.css";
 const Homepage = () => {
   return (
-    <>
-      <Navbar />
+    <div className="home">
+      <div className="homepage">
+       <Navbar/>
+        <Userlogin />
+      </div>
       <AccountForm />
       <Welcome />
       <Dashboard />
       <Form />
-      <Chat />
-      <Userlogin />
+      {/* <Chat /> */}
+
       <About />
-    </>
+    </div>
   );
 };
 export default Homepage;
