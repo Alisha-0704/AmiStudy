@@ -3,8 +3,7 @@ import "./AccountForm.css";
 
 function AccountForm() {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    Name: "",
     studentId: "",
     Password: "",
   });
@@ -20,23 +19,16 @@ function AccountForm() {
     e.preventDefault();
     console.log(formData);
   };
-  
+
   return (
     <div className="accountform_main">
       <form className="account-form" onSubmit={handleSubmit}>
         <h1>CREATE ACCOUNT</h1>
         <input
           type="text"
-          name="firstName"
-          placeholder="First Name"
-          value={formData.firstName}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          name="lastName"
-          placeholder="Last Name"
-          value={formData.lastName}
+          name="Name"
+          placeholder="Name"
+          value={formData.Name}
           onChange={handleInputChange}
         />
 
@@ -56,7 +48,7 @@ function AccountForm() {
           onChange={handleInputChange}
         />
         <a href="/dashboard">
-        <button type="submit">Create Account</button>
+          <button type="submit">Create Account</button>
         </a>
       </form>
     </div>

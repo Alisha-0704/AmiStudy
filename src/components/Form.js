@@ -1,57 +1,3 @@
-// import React, { useState } from "react";
-// import "./Form.css";
-
-// const Form = () => {
-//   const [name, setName] = useState("");
-//   const [preferences, setPreferences] = useState("");
-//   const [about, setAbout] = useState("");
-
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     console.log(`Name: ${name}, Preferences: ${preferences}, About: ${about}`);
-//     // replace console.log with your own form submission logic
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit} className="form">
-//       <div className="form-group">
-//         <label htmlFor="name">Name:</label>
-//         <input
-//           type="text"
-//           id="name"
-//           value={name}
-//           onChange={(event) => setName(event.target.value)}
-//           required
-//         />
-//       </div>
-
-//       <div className="form-group">
-//         <label htmlFor="preferences">Preferences:</label>
-//         <input
-//           type="text"
-//           id="preferences"
-//           value={preferences}
-//           onChange={(event) => setPreferences(event.target.value)}
-//           required
-//         />
-//       </div>
-
-//       <div className="form-group">
-//         <label htmlFor="about">About:</label>
-//         <textarea
-//           id="about"
-//           value={about}
-//           onChange={(event) => setAbout(event.target.value)}
-//           required
-//         />
-//       </div>
-
-//       <button type="submit">Submit</button>
-//     </form>
-//   );
-// };
-
-// export default Form;
 import React, { useState } from "react";
 import "./Form.css";
 
@@ -93,7 +39,7 @@ const Form = () => {
             onChange={(event) => setCourse(event.target.value)}
             required
           >
-            <option value="" selected disabled hidden>
+            <option value="" disabled hidden>
               Choose Course
             </option>
             <option value="btech">B.Tech</option>
@@ -110,7 +56,7 @@ const Form = () => {
             onChange={(event) => setPreferences(event.target.value)}
             required
           >
-            <option value="" selected disabled hidden>
+            <option value="" disabled hidden>
               Choose Specialisation
             </option>
             <option value="frontend">Frontend</option>
@@ -128,7 +74,7 @@ const Form = () => {
             onChange={(event) => setLanguage(event.target.value)}
             required
           >
-            <option value="" selected disabled hidden>
+            <option value="" disabled hidden>
               Choose language
             </option>
             <option value="cpp">C++</option>

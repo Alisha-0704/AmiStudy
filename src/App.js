@@ -1,6 +1,6 @@
 import Homepage from "./pages/Homepage";
 import Dashboard from "./pages/Dashboard";
-import Login from "./components/Userlogin";
+// import Login from "./components/Userlogin";
 import Navbar from "./components/Navbar";
 import Signup from "./components/AccountForm";
 
@@ -13,7 +13,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/login" element={<Login />} />
+        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/signup" elemnt={<Signup />} />
       </Routes>
     </BrowserRouter>
