@@ -74,10 +74,13 @@ const Navbar = () => {
         <div className="logos">
           <img className="logo" src={logo} alt="loading" />
         </div>
-
         <div className="options">
-          <button className="but">Match</button>
-          <button className="but">About</button>
+          <a href="/#dashboard_id">
+            <button className="but">Match</button>
+          </a>
+          <a href="/#about_id">
+            <button className="but">About</button>
+          </a>
           <NotificationBell />
         </div>
       </div>

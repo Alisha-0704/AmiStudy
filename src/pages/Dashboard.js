@@ -183,7 +183,7 @@ function Dashboard() {
   };
 
   return (
-    <div className="Dashboard_Main">
+    <div className="Dashboard_Main" id="dashboard_id">
       <link
         href="https://fonts.googleapis.com/css?family=Damion&display=swap"
         rel="stylesheet"

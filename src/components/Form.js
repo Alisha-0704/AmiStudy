@@ -72,7 +72,7 @@ const Form = () => {
   console.log(name);
   return (
     <div className="specialisation_form">
-      <h className="form_heading">LET'S MAKE YOUR PROFILE</h>
+      <h2 className="form_heading">LET'S MAKE YOUR PROFILE</h2>
       <form onSubmit={handleSubmit} className="form">
         <div className="form-group">
           <label htmlFor="name">Name:</label>
