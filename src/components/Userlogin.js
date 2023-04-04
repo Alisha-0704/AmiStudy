@@ -29,9 +29,7 @@ function Userlogin() {
       />
 
       <button type="submit">Log In</button>
-      <a href="/signup"> 
-        Don't have an account? 
-        </a>
+      <a href="/signup">Don't have an account?</a>
     </form>
   );
 }
