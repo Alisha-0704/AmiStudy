@@ -1,57 +1,3 @@
-// import React, { useState } from "react";
-// import "./Form.css";
-
-// const Form = () => {
-//   const [name, setName] = useState("");
-//   const [preferences, setPreferences] = useState("");
-//   const [about, setAbout] = useState("");
-
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     console.log(`Name: ${name}, Preferences: ${preferences}, About: ${about}`);
-//     // replace console.log with your own form submission logic
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit} className="form">
-//       <div className="form-group">
-//         <label htmlFor="name">Name:</label>
-//         <input
-//           type="text"
-//           id="name"
-//           value={name}
-//           onChange={(event) => setName(event.target.value)}
-//           required
-//         />
-//       </div>
-
-//       <div className="form-group">
-//         <label htmlFor="preferences">Preferences:</label>
-//         <input
-//           type="text"
-//           id="preferences"
-//           value={preferences}
-//           onChange={(event) => setPreferences(event.target.value)}
-//           required
-//         />
-//       </div>
-
-//       <div className="form-group">
-//         <label htmlFor="about">About:</label>
-//         <textarea
-//           id="about"
-//           value={about}
-//           onChange={(event) => setAbout(event.target.value)}
-//           required
-//         />
-//       </div>
-
-//       <button type="submit">Submit</button>
-//     </form>
-//   );
-// };
-
-// export default Form;
 import React, { useState } from "react";
 import "./Form.css";
 
@@ -72,7 +18,7 @@ const Form = () => {
   console.log(name);
   return (
     <div className="specialisation_form">
-      <h1 className="form_heading">LET'S MAKE YOUR PROFILE</h1>
+      <h2 className="form_heading">LET'S MAKE YOUR PROFILE</h2>
       <form onSubmit={handleSubmit} className="form">
         <div className="form-group">
           <label htmlFor="name">Name:</label>

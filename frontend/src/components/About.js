@@ -35,7 +35,7 @@ const members = [
 ];
 
 const About = () => (
-  <div className="about">
+  <div id="about_id" className="about">
     <h1>Our Team</h1>
     <div className="all_membercard">
       {members.map((member) => (
