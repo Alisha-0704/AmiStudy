@@ -8,6 +8,7 @@ function AccountForm() {
   const [collegeId, setcollegeId] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
+  const [email, setEmail] = React.useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -23,9 +24,8 @@ function AccountForm() {
     );
 
     try {
-      const response = await axios.post("http://localhost:8000/routes/user/signup", {
-        Name,
-        collegeId,
+      const response = await axios.post("http://localhost:3001/signup", {
+        email,
         password
       });
       console.log(response.data);
@@ -35,9 +35,10 @@ function AccountForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="account-form">
+    <div className="accountform_main">
+      <form onSubmit={handleSubmit} className="account-form">
       <h1>CREATE AN ACCOUNT</h1>
-      <label htmlFor="name">Name:</label>
+      {/* <label htmlFor="name">Name:</label>
       <input
         type="text"
         id="name"
@@ -51,7 +52,15 @@ function AccountForm() {
         id="collegeId"
         value={collegeId}
         onChange={(event) => setcollegeId(event.target.value)}
-      />
+      /> */}
+
+<label htmlFor="email-id">Email:</label>
+        <input
+          type="text"
+          id="student-id"
+          value={email} //this needs to be passed to backend.
+          onChange={(event) => setEmail(event.target.value)}
+        />
 
       <label htmlFor="password">Password:</label>
       <input
@@ -71,6 +80,8 @@ function AccountForm() {
 
       <button type="submit">Sign Up</button>
     </form>
+    </div>
+    
   );
 }
 

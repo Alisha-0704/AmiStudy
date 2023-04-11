@@ -1,8 +1,3 @@
-body {
-  text-align: center;
-  width: 100%;
-  font-family: Arial, sans-serif;
-}
 .Main_data {
   align-items: center;
 }
@@ -13,13 +8,7 @@ h1 {
 }
 .maindata{
  width:fit-content;
- background-color: rgb(242, 255, 255);
- padding: 20px;
- margin-left: 400px;
- border-radius: 30px;
- 
-
- 
+ background-color: rgb(242, 255, 255); 
 }
 h3 {
   font-size: 26px;
@@ -34,7 +23,7 @@ p {
 }
 
 .iagreebtn {
-  background-color: #ff5579;
+  background-color: #fe3c72;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -47,7 +36,7 @@ p {
 }
 
 .iagreebtn:hover {
-  background-color: #0077a3;
+  background-color: #ff5579;
 }
 .Main_data {
   background-image: url("../images/AmiStudy_main.png");
@@ -55,5 +44,12 @@ p {
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
-  padding-top: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnAgree {
+  display: flex;
+  justify-content: center;
 }

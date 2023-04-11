@@ -13,7 +13,11 @@
   background-color: #d4e8fc;
 }
 .accountform_main {
-  padding-top: 250px;
+  background-image: url("../images/homepgae_amistudy.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
 .account-form input,
