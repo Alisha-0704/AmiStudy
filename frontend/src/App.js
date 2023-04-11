@@ -1,25 +1,19 @@
 
+import Welcome from "./components/Welcome.js";
 import Homepage from "./pages/Homepage.js";
-import Dashboard from "./pages/Dashboard.js";
+import UserDashBoard from "./pages/UserDashBoard.js";
 import AccountForm from "./components/AccountForm.js";
-import Sign from "./components/Sign.js";
-//import Login from "./pages/Login.js";
-import Navbar from "./components/Navbar.js";
-// import Userlogin from "./components/Userlogin.js";
-// import SimpleComponent from "./pages/SimpleComponent.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./assets/main.css";
 
 const App = () => {
   return (
     <BrowserRouter>
-    {/* <SimpleComponent /> */}
-      <Navbar />
       <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/signup" element={<Sign />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        {/* <Route path="/login" element={<Login />} /> */}
-        <Route path="/signup" elemnt={<AccountForm />} />
+        <Route path="/" element={<Welcome />} />
+        <Route path="/Homepage" element={<Homepage />} />
+        <Route path="/UserDashBoard" element={<UserDashBoard />} />
+        <Route path="/signup" element={<AccountForm />} />
       </Routes>
     </BrowserRouter>
   );
