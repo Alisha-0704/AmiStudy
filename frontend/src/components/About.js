@@ -1,10 +1,10 @@
 import React from "react";
 import "./About.css";
 import shreimg from "../images/shreya_mishra.png";
-import alishaimg from "../images/Alisha.jpg";
-import palakimg from "../images/palak.jpg";
-import riyaimg from "../images/Riya.jpg";
-import ayushiimg from "../images/Ayushi_lal.jpg";
+import alishaimg from "../images/Alisha.png";
+import palakimg from "../images/palak.png";
+import riyaimg from "../images/Riya.png";
+import ayushiimg from "../images/Ayushi_lal.png";
 
 const members = [
   {

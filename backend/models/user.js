@@ -1,39 +1,161 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const userSchema = new mongoose.Schema({
-  firstName: {
-    type: String,
-    required: true,
-  },
-  lastName: {
-    type: String,
-    required: true,
-  },
-  studentId: {
-    type: String,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
+const UserSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {                                               
+        type: String,
+        required: true
+    },
+    collegeId: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    verified: {
+        type: Boolean,
+        default: false
+    },
+    bio: {
+        type: String,
+        default: ''
+    },
+    profileImage: {
+        type: String,
+        default: ''
+    },
+    interests: [{
+        type: String
+    }],
+    major: {
+        type: String,
+        default: ''
+    },
+    mentorship: {
+        mentor: {
+            type: Boolean,
+            default: false
+        },
+        mentee: {
+            type: Boolean,
+            default: false
+        }
+    },
+    matching: {
+        preferredMajor: [{
+            type: String
+        }],
+        preferredInterests: [{
+            type: String
+        }],
+        matchedUsers: [{
+            userId: {
+                type: Schema.Types.ObjectId,
+                ref: 'user'
+            },
+            matchScore: {
+                type: Number,
+                default: 0
+            }
+        }]
+    },
+    communities: [{
+        communityId: {
+            type: Schema.Types.ObjectId,
+            ref: 'Community'
+        },
+        name: {
+            type: String
+        },
+        description: {
+            type: String
+        }
+    }],
+    events: [{
+        eventId: {
+            type: Schema.Types.ObjectId,
+            ref: 'Event'
+        },
+        name: {
+            type: String
+        },
+        description: {
+            type: String
+        },
+        startTime: {
+            type: Date
+        },
+        endTime: {
+            type: Date
+        },
+        location: {
+            type: String
+        },
+        isVirtual: {
+            type: Boolean,
+            default: false
+        },
+        videoCallUrl: {
+            type: String,
+            default: ''
+        },
+        media: [{
+            type: {
+                type: String
+            },
+            url: {
+                type: String
+            }
+        }]
+    }],
+    whiteboard: {
+        url: {
+            type: String,
+            default: ''
+        },
+        startTime: {
+            type: Date
+        },
+        endTime: {
+            type: Date
+        }
+    },
+    feedback: {
+        stars: [{
+            type: Number
+        }],
+        paragraph: {
+            type: String,
+            default: ''
+        }
+    },
+    reported: {
+        type: Boolean,
+        default: false
+    },
+    reportedBy: [{
+        userId: {
+            type: Schema.Types.ObjectId,
+            ref: 'user'
+        },
+        reason: {
+            type: String
+        }
+    }],
+    unmatchedUsers: [{
+        userId: {
+            type: Schema.Types.ObjectId,
+            ref: 'user'
+        }
+    }]
 });
-// Hash password before saving to database
-userSchema.pre('save', async function(next) {
-  const user = this;
-  if (!user.isModified('password')) {
-    return next();
-  }
-  const salt = await bcrypt.genSalt(10);
-  user.password = await bcrypt.hash(user.password, salt);
-  next();
-});
 
-// Compare password
-userSchema.methods.comparePassword = async function(candidatePassword) {
-  const user = this;
-  return bcrypt.compare(candidatePassword, user.password);
-};
-const User = mongoose.model("User", userSchema);
-
-module.exports = User;
+module.exports = mongoose.model('user', UserSchema);

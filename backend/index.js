@@ -1,47 +1,56 @@
-// Import required packages and modules
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
-// Import API routes
-const usersRoutes = require('./routes/user');
-// const matchingRoutes = require('./routes/matching');
-// const networkingRoutes = require('./routes/networking');
-// const eventsRoutes = require('./routes/events');
-// const chatRoutes = require("./routes/chat");
-
-
-// Initialize Express app
+// const path = require("path")
 const app = express();
-
-// Set up middleware
+const port = 3001;
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors());
+const userSchema = new mongoose.Schema({
+  email: { type: String, required: true },
+  password: { type: String, required: true },
+});
+const User = mongoose.model('User', userSchema);
+mongoose.connect('mongodb://127.0.0.1/connect', { useNewUrlParser: true });
+app.post('/signup', async (req, res) => {
+  const { email, password } = req.body;
 
-// Set up database connection
-const uri = 'mongodb+srv://A0lish7_:A0lish7@clusternoob.umtu1w6.mongodb.net/?retryWrites=true&w=majority';
-mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => console.log('Database connected!'))
-  .catch((err) => console.error(err));
+  try {
+    const existingUser = await User.findOne({ email });
 
-// Set up API routes
-app.use('/api/users', usersRoutes);
-// app.use('/api/matching', matchingRoutes);
-// app.use('/api/networking', networkingRoutes);
-// // app.use('/api/events', eventsRoutes);
-// app.use("/api/chat", chatRoutes);
+    if (existingUser) {
+      res.status(400).json({ message: 'User already exists' });
+      return;
+    }
 
-// Set up error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Internal Server Error');
+    const newUser = new User({ email, password });
+    await newUser.save();
+
+    res.json({ message: 'User created successfully' });
+  } catch (error) {
+    
+    res.status(500).json({ message: 'An error occurred' });
+    console.log(error);
+  }
+});
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.findOne({ email, password });
+    if (user) {
+      res.json({ message: 'Login successful' });
+    } else {
+      res.status(401).json({ message: 'Invalid credentials' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
 });
 
-// Start server
-const PORT = process.env.PORT || 8000;
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});

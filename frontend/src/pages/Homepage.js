@@ -1,7 +1,7 @@
 import Welcome from "../components/Welcome.js";
 import Navbar from "../components/Navbar.js";
 import Form from "../components/Form.js";
-import Chat from "../components/ChattingPage.js";
+// import Chat from "../components/ChattingPage.js";
 import Dashboard from "./Dashboard.js";
 import AccountForm from "../components/AccountForm.js";
 import Userlogin from "../components/Userlogin.js";

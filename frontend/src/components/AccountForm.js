@@ -4,21 +4,18 @@ import axios from "axios";
 import "./AccountForm.css";
 
 function AccountForm() {
-  const [firstName, setFirstName] = React.useState("");
-  const [lastName, setLastName] = React.useState("");
-  const [email, setEmail] = React.useState("");
+  const [Name, setName] = React.useState("");
+  const [collegeId, setcollegeId] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(
-      "First Name:",
-      firstName,
-      "Last Name:",
-      lastName,
-      "Email:",
-      email,
+      "Name:",
+      Name,
+      "collegeId:",
+      collegeId,
       "Password:",
       password,
       "Confirm Password:",
@@ -26,12 +23,10 @@ function AccountForm() {
     );
 
     try {
-      const response = await axios.post("/api/users/register", {
-        firstName,
-        lastName,
-        email,
-        password,
-        confirmPassword,
+      const response = await axios.post("http://localhost:8000/routes/user/signup", {
+        Name,
+        collegeId,
+        password
       });
       console.log(response.data);
     } catch (error) {
@@ -42,28 +37,20 @@ function AccountForm() {
   return (
     <form onSubmit={handleSubmit} className="account-form">
       <h1>CREATE AN ACCOUNT</h1>
-      <label htmlFor="first-name">First Name:</label>
+      <label htmlFor="name">Name:</label>
       <input
         type="text"
-        id="first-name"
-        value={firstName}
-        onChange={(event) => setFirstName(event.target.value)}
+        id="name"
+        value={Name}
+        onChange={(event) => setName(event.target.value)}
       />
 
-      <label htmlFor="last-name">Last Name:</label>
+      <label htmlFor="collegeId">collegeId:</label>
       <input
         type="text"
-        id="last-name"
-        value={lastName}
-        onChange={(event) => setLastName(event.target.value)}
-      />
-
-      <label htmlFor="email">Email:</label>
-      <input
-        type="email"
-        id="email"
-        value={email}
-        onChange={(event) => setEmail(event.target.value)}
+        id="collegeId"
+        value={collegeId}
+        onChange={(event) => setcollegeId(event.target.value)}
       />
 
       <label htmlFor="password">Password:</label>
