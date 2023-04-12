@@ -58,6 +58,40 @@ app.post("/login", async (req, res) => {
     }
 });
 
+app.get("/user", async (req, res) => {
+    const { email } = req.query;
+
+    if (!email) {
+        return res.status(400).send({
+            success: false,
+            message: "Email ID is required"
+        })
+    }
+
+    try {
+        const user = await User.findOne({ email: email });
+        if (!user) {
+            return res.status(404).send({
+                success: false,
+                message: "Invalid credentials! User not found."
+            })
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "User details found",
+            data: user
+        })
+
+    } catch (err) {
+        console.log("Error in /matched-profile: ", err);
+        return res.status(500).send({
+            success: false,
+            message: "Internal Server Error.",
+        });
+    }
+})
+
 app.post("/update-profile", async (req, res) => {
     const { email, course, specialization, programmingLanguage } = req.body;
 
