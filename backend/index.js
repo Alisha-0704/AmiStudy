@@ -57,8 +57,19 @@ app.post("/login", async (req, res) => {
         res.status(500).json({ message: "Internal server error" });
     }
 });
-
-app.get("/user", async (req, res) => {
+const getUserEmail = (req, res, next) => {
+    const email = req.cookies.email || req.session.email;
+    if (email) {
+      req.email = email;
+      next();
+    } else {
+      res.status(401).send({
+        success: false,
+        message: "Unauthorized: Please log in first"
+      });
+    }
+  }
+app.get("/user", getUserEmail, async (req, res) => {
     const { email } = req.query;
 
     if (!email) {
@@ -67,7 +78,6 @@ app.get("/user", async (req, res) => {
             message: "Email ID is required"
         })
     }
-
     try {
         const user = await User.findOne({ email: email });
         if (!user) {
@@ -76,13 +86,11 @@ app.get("/user", async (req, res) => {
                 message: "Invalid credentials! User not found."
             })
         }
-
         return res.status(200).json({
             success: true,
             message: "User details found",
             data: user
         })
-
     } catch (err) {
         console.log("Error in /matched-profile: ", err);
         return res.status(500).send({

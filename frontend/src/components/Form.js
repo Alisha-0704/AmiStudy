@@ -1,32 +1,48 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./Form.css";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
-  const [name, setName] = useState("");
-  const [preferences, setPreferences] = useState("");
+  const [email, setEmail] = useState("");
   const [course, setCourse] = useState("");
-  const [language, setLanguage] = useState("");
+  const [specialization, setSpecialization] = useState("");
+  const [programmingLanguage, setProgrammingLanguage] = useState("");
   const [about, setAbout] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(
-      `Name: ${name}, Specialization: ${preferences}, Course: ${course}, About: ${about}`
+      `Email: ${email}, Course: ${course}, Specialization: ${specialization}, Programming Language: ${programmingLanguage}, About: ${about}`
     );
-    // replace console.log with your own form submission logic
-  };
-  console.log(name);
+
+  try {
+    const response = await axios.post("http://localhost:3001/update-profile", {
+      email,
+      course,
+      specialization,
+      programmingLanguage,
+      about
+    });
+    console.log(response.data);
+    navigate("/UserDashBoard");
+  } catch (error) {
+    console.log(error.response.data);
+  }
+};
+
   return (
     <div className="specialisation_form">
       <h2 className="form_heading">LET'S MAKE YOUR PROFILE</h2>
       <form onSubmit={handleSubmit} className="form">
         <div className="form-group">
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name">email:</label>
           <input
-            type="text"
+            type="email"
             id="name"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
             required
           />
         </div>
@@ -52,8 +68,8 @@ const Form = () => {
         <div className="form-group">
           <select
             id="prefrences"
-            value={preferences}
-            onChange={(event) => setPreferences(event.target.value)}
+            value={specialization}
+            onChange={(event) => setSpecialization(event.target.value)}
             required
           >
             <option value="" disabled hidden>
@@ -70,8 +86,8 @@ const Form = () => {
         <div className="form-group">
           <select
             id="language"
-            value={language}
-            onChange={(event) => setLanguage(event.target.value)}
+            value={programmingLanguage}
+            onChange={(event) => setProgrammingLanguage(event.target.value)}
             required
           >
             <option value="" disabled hidden>

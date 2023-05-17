@@ -1,53 +1,116 @@
-import React, { useState, useMemo, useRef } from "react";
+import React, { useState,useEffect, useMemo, useRef } from "react";
 import TinderCard from "react-tinder-card";
 import "./Dashboard.css";
-import shreimg from "../images/shreya_mishra.png";
-import alishaimg from "../images/Alisha.png";
-import palakimg from "../images/palak.png";
-import riyaimg from "../images/Riya.png";
-import ayushiimg from "../images/Ayushi_lal.png";
+// import shreimg from "../images/shreya_mishra.png";
+// import alishaimg from "../images/Alisha.png";
+// import palakimg from "../images/palak.png";
+// import riyaimg from "../images/Riya.png";
+// import ayushiimg from "../images/Ayushi_lal.png";
 
-const db = [
-  {
-    name: "Shreya Mishra",
-    url: shreimg,
-    about: "I love to explore and learn",
-  },
-  {
-    name: "Alisha Kushwaha",
-    url: alishaimg,
-    about: "I love to explore and learn",
-  },
+// const db = [
+//   {
+//     name: "Shreya Mishra",
+//     url: shreimg,
+//     about: "My linkedIn and other socials",
+//   },
+//   {
+//     name: "Alisha Kushwaha",
+//     url: alishaimg,
+//     about: "My linkedIn and other socials",
+//   },
 
-  {
-    name: "Ayushi Lal",
-    url: ayushiimg,
-    about: "I love to explore and learn",
-  },
-  {
-    name: "Riya",
-    url: riyaimg,
-    about: "I love to explore and learn",
-  },
-  {
-    name: "Palak",
-    url: palakimg,
-    about: "I love to explore and learn",
-  },
-];
-
+//   {
+//     name: "Ayushi Lal",
+//     url: ayushiimg,
+//     about: "My linkedIn and other socials",
+//   },
+//   {
+//     name: "Riya",
+//     url: riyaimg,
+//     about: "My linkedIn and other socials",
+//   },
+//   {
+//     name: "Palak",
+//     url: palakimg,
+//     about: "My linkedIn and other socials",
+//   },
+// ];
 function Dashboard() {
-  const [currentIndex, setCurrentIndex] = useState(db.length - 1);
+  const [db, setDb] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(null);
   const [lastDirection, setLastDirection] = useState();
+  const [matchedProfiles, setMatchedProfiles] = useState(null);
+  const [fetchingProfiles, setFetchingProfiles] = useState(false);
+  const [email, setEmail] = useState("");
+useEffect(() => {
+  async function fetchUser() {
+    try {
+      const response = await fetch("/user");
+      const data = await response.json();
+      setEmail(data.email);
+    } catch (error) {
+      console.error("Error fetching user: ", error);
+    }
+  }
+
+  fetchUser();
+}, []);
+
+async function getMatchedProfiles(email) {
+    setFetchingProfiles(true);
+
+    const requestOptions = {
+        method: "GET",
+        headers: {
+            "content-type": "application/json",
+            "accept": "application/json",
+        },
+      };
+      const url = new URL("http://localhost:3001/matched-profiles");
+      url.searchParams.append("email", email);
+    
+    try {
+        const response = await fetch(url, requestOptions);
+        console.log("Response: ", response);
+    
+        if (!response.ok) {
+            if (response.status === 400) {
+                setMatchedProfiles(null);
+                return;
+            }
+            
+            throw new Error(console.error());
+        }
+        
+        const data = await response.json();
+        console.log("Data: ", data.data);
+        setDb(data);
+        setCurrentIndex(data.length - 1);
+        setMatchedProfiles(data.data);
+    } catch (err) {
+        console.log("Error in fetching matched profiles: ", err);
+    } finally {
+        setFetchingProfiles(false);
+    }
+}
+
+
+useEffect(() => {
+    async function runGetMatchedProfiles(email) {
+        await getMatchedProfiles(email);
+    }
+    
+    runGetMatchedProfiles();
+}, [email]);
   // used for outOfFrame closure
   const currentIndexRef = useRef(currentIndex);
-
+  
   const childRefs = useMemo(
     () =>
       Array(db.length)
         .fill(0)
         .map((i) => React.createRef()),
-    []
+    [db.length]
   );
 
   const updateCurrentIndex = (val) => {
@@ -68,7 +131,9 @@ function Dashboard() {
   const outOfFrame = (name, idx) => {
     console.log(`${name} (${idx}) left the screen!`, currentIndexRef.current);
 
-    currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
+    if (currentIndexRef.current >= idx) {
+      childRefs[idx].current.restoreCard();
+    }
   };
 
   const swipe = async (dir) => {

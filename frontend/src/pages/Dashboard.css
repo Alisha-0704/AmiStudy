@@ -28,6 +28,7 @@
   background-position: center;
   display: flex;
   flex-direction: column;
+    padding-left:40px;
 }
 .img_container {
   width: 250px;
@@ -47,12 +48,11 @@
   height: 100%;
 }
 .card_pername{
-  padding-right: 120vh;
+  padding-left: 20px;
 
 }
 .card_perabout{
-  padding-right: 100vh;
-
+  padding-left: 20px;
 }
 .card h3 {
   position: absolute;

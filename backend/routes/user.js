@@ -21,16 +21,16 @@ router.get('/signup', (req,res)=> {
 router.get('/dashboard', isAuthenticatedUser,(req,res)=> {
   res.render('dashboard');
 });
-router.post('/login', passport.authenticate('local', {
-  if(err)
-  {
-    console.log(err)
-  },
+// router.post('/login', passport.authenticate('local', {
+//   if(err)
+//   {
+//     console.log(err)
+//   },
  
-  successRedirect : '/dashboard',
-  failureRedirect : '/login',
-  failureFlash: 'Invalid email or password. Try Again!!!'
-}));
+//   successRedirect : '/dashboard',
+//   failureRedirect : '/login',
+//   failureFlash: 'Invalid email or password. Try Again!!!'
+// }));
 router.post('/signup', (req, res)=> {
   let {name, email, password} = req.body;
 
@@ -47,12 +47,6 @@ router.post('/signup', (req, res)=> {
       }
 
       res.redirect('/login')
-      // res.send("Data submitted successfully")
-      // passport.authenticate('local') (req, res, ()=> {
-      //     req.flash('success_msg', 'Account created successfully');
-      //     res.redirect('/login');
-      // });
-  });
 })
 // Route to handle user sign-up
 // router.post('/signup', async (req, res, next) => {
@@ -72,27 +66,6 @@ router.post('/signup', (req, res)=> {
 //     res.status(500).json({ message: 'Internal server error' });
 //   }
 // });
-
-// // Route to handle user login
-// router.post('/login', async (req, res, next) => {
-//     const { collegeId, password } = req.body;
-//     try {
-//       // Find the user by collegeId
-//       const user = await UserSignup.findOne({ collegeId });
-//       if (!user) {
-//         return res.status(401).json({ message: 'Invalid college id or password' });
-//       }
-//       // Validate the user's password
-//       if (user.password !== password) {
-//         return res.status(401).json({ message: 'Invalid college ID or password' });
-//       }
-//       res.status(200).json({ message: 'Login successful' });
-//     } catch (error) {
-//       console.error(error);
-//       res.status(500).json({ message: 'Internal server error' });
-//     }
-//   });
-  
 
 // // Route for getting a user's profile
 // router.get('/:collegeId', async (req, res) => {

@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import "./AccountForm.css";
 
@@ -9,6 +10,7 @@ function AccountForm() {
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [email, setEmail] = React.useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -29,6 +31,7 @@ function AccountForm() {
         password
       });
       console.log(response.data);
+      navigate("/Form");
     } catch (error) {
       console.log(error.response.data);
     }
@@ -38,21 +41,6 @@ function AccountForm() {
     <div className="accountform_main">
       <form onSubmit={handleSubmit} className="account-form">
       <h1>CREATE AN ACCOUNT</h1>
-      {/* <label htmlFor="name">Name:</label>
-      <input
-        type="text"
-        id="name"
-        value={Name}
-        onChange={(event) => setName(event.target.value)}
-      />
-
-      <label htmlFor="collegeId">collegeId:</label>
-      <input
-        type="text"
-        id="collegeId"
-        value={collegeId}
-        onChange={(event) => setcollegeId(event.target.value)}
-      /> */}
 
 <label htmlFor="email-id">Email:</label>
         <input
